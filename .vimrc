@@ -67,8 +67,8 @@ set numberwidth=5
 set showmatch
 set linebreak
 set showbreak=>
-set list
-set listchars=tab:>-,trail:.
+"set list
+"set listchars=trail:.
 "set spell
 set display=lastline
 
