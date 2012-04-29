@@ -1,1 +1,21 @@
-/Users/dorian/Dropbox/.gitconfig
+[user]
+	name = Dorian Johnson
+	email = 2012@dorianj.net
+
+[alias]
+	st = status
+	ci = commit
+	cia = commit -a
+	ciappend = commit --amend
+	co = checkout
+	dt = difftool
+	dk = difftool -t Kaleidoscope
+	unp = log --branches --not --remotes
+	fu = fetch upstream
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+
+[difftool]
+	prompt = false
+
