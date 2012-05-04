@@ -9,7 +9,7 @@
 	ciappend = commit --amend
 	co = checkout
 	dt = difftool
-	dk = difftool -t Kaleidoscope
+	dk = difftool -y -t Kaleidoscope
 	unp = log --branches --not --remotes
 	fu = fetch upstream
 
