@@ -40,6 +40,9 @@ set nobackup
 set scrolloff=5
 set backspace=indent,eol,start
 
+" Fast command to sudo write (w!!)
+cmap w!! %!sudo tee > /dev/null %
+
 " Window title
 if $TERM=='screen'
 	exe 'set title titlestring=vim:%t%(\ %m%)'
