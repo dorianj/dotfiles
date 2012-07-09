@@ -77,10 +77,10 @@ set display=lastline
 
 " Window size
 set equalalways
-set textwidth=79
+"set textwidth=79
 set winminwidth=10
 set winwidth=80
-set nowrap
+"set nowrap
 
 " Status line
 set laststatus=2

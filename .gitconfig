@@ -10,8 +10,10 @@
 	co = checkout
 	dt = difftool
 	dk = difftool -y -t Kaleidoscope
+	dv = difftool -t vimdiff
 	unp = log --branches --not --remotes
 	fu = fetch upstream
+	up = !git remote update -p; git merge --ff-only @{u}
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
