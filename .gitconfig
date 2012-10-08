@@ -14,6 +14,7 @@
 	unp = log --branches --not --remotes
 	fu = fetch upstream
 	up = !git remote update -p; git merge --ff-only @{u}
+	bi = bisect
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
