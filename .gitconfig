@@ -1,24 +1,35 @@
 [user]
 	name = Dorian Johnson
-	email = 2012@dorianj.net
+	email = 2014@dorianj.net
 
 [alias]
 	st = status
 	ci = commit
-	cia = commit -a
-	ciappend = commit --amend
 	co = checkout
-	dt = difftool
 	dk = difftool -y -t Kaleidoscope
-	dv = difftool -t vimdiff
-	unp = log --branches --not --remotes
 	fu = fetch upstream
-	up = !git remote update -p; git merge --ff-only @{u}
-	bi = bisect
+  slog = log --oneline --decorate --graph --all --date=relative
+  sloga = log --pretty=format:\"%h%d %s (%an)\" --decorate --graph --all --date=relative
+  cp = cherry-pick -x
+	orphank = !gitk --all `git reflog | cut -c1-7`&
+	mud = merge --ff-only upstream/develop
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 
 [difftool]
 	prompt = false
 
+[push]
+	default = simple
+
+[commit]
+	gpgsign = true
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
