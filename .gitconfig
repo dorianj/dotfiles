@@ -1,35 +1,46 @@
 [user]
-	name = Dorian Johnson
-	email = 2014@dorianj.net
+  name = Dorian Johnson
+  email = 2014@dorianj.net
+
+[gc]
+  pruneexpire = 30 days
+  auto = 0
 
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	dk = difftool -y -t Kaleidoscope
-	fu = fetch upstream
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  dk = difftool -y -t Kaleidoscope
+  ir = rebase --interactive --autosquash develop
+  im = rebase --interactive --autosquash master
+  fu = fetch upstream
+  mud = merge --ff-only upstream/develop
+  pushu = !git push --set-upstream origin `git symbolic-ref --short HEAD`
+  fix = commit --amend --no-edit
+  bump = !git commit -a --amend --no-edit && git push -f
   slog = log --oneline --decorate --graph --all --date=relative
-  sloga = log --pretty=format:\"%h%d %s (%an)\" --decorate --graph --all --date=relative
   cp = cherry-pick -x
-	orphank = !gitk --all `git reflog | cut -c1-7`&
-	mud = merge --ff-only upstream/develop
+  orphank = !gitk --all `git reflog | cut -c1-7`&
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = reattach-to-user-namespace ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = reattach-to-user-namespace ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 
 [difftool]
-	prompt = false
+  prompt = false
 
 [push]
-	default = simple
+  default = simple
 
-[commit]
-	gpgsign = true
+#[commit]
+#  gpgsign = true
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[core]
+  excludesfile = ~/.gitignore
